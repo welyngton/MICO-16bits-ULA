@@ -1,0 +1,69 @@
+#Script GSS de simulação para a instruçao OR para a ULA:
+
+#Fios mostrados na simulação:
+
+probe R
+probe A
+probe B
+
+#Sinais:
+
+probe n
+probe z
+probe p
+probe o
+
+#Inicializacao de switches:
+
+set LoadReg 1'b0
+set RegDst 4'h0
+set RegA 4'h0
+set RegB 4'h0
+set Imm5 5'h0
+set SelB 1'b1
+set ctrlULA 3'h5
+set Reset 1'b1
+set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set Reset 1'b0
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+#Colocando o valor Ox3 no registrador 0.
+set RegDst 4'h0
+set Imm5 5'h4
+set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set LoadReg 1'b0
+
+#Colocando o valor Ox4 no registrador 1.
+set RegDst 4'h1
+set Imm5 8'h3
+set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set LoadReg 1'b0
+
+#Realiza a operação AND entre o registrador 0 e o registrador 1, e coloca o resultado em 2.
+set SelB 1'b0
+set RegA 4'h0
+set RegB 4'h1
+set RegDst 4'h2
+set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set LoadReg 1'b0
+
+#Andamento de 2 ciclos do relógio:
+clock +2

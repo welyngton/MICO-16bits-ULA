@@ -1,0 +1,56 @@
+#Script GSS para a instruçao IDENTIDADE na ULA:
+
+#Fios mostrados na simulação:
+
+probe R
+probe A
+
+#Sinais:
+
+probe n
+probe z
+probe p
+probe o
+
+#Inicializacao dos switches e dips:
+set LoadReg 1'b0
+set RegDst 4'h0
+set RegA 4'h0
+set ctrlULA 3'h7
+set Reset 1'b1
+set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set Reset 1'b0
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+#Colocando o valor Ox4 no registrador 0.
+set RegDst 4'h0
+set Imm5 5'h4
+set LoadReg 1'b1
+
+#Setando o Registrador 0 como A.
+set RegA 4'h0
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set LoadReg 1'b0
+
+#Passa o registrador 0 (A <=> IDENTIDADE) e guarda no 1:
+
+#set RegA 4'h0
+#set RegDst 4'h1
+#set LoadReg 1'b1
+
+#Andamento de 1 ciclo do relógio:
+clock +1
+
+set LoadReg 1'b0
+
+#Andamento de 1 ciclo do relógio:
+clock +2
